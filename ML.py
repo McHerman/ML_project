@@ -17,18 +17,18 @@ vY = dataset[13424:,8]
 
 # define the keras model
 model = Sequential()
-model.add(Dense(12, input_shape=(8,), activation='relu'))
-model.add(Dense(8, activation='relu'))
-model.add(Dense(1, activation='sigmoid'))
+model.add(Dense(1, input_shape=(8,), activation='sigmoid'))
+#model.add(Dense(12, activation='relu'))
+#model.add(Dense(1, activation='sigmoid'))
 # compile the keras model
 model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
 # fit the keras model on the dataset
-history = model.fit(X, Y, epochs=20, batch_size=100)
+history = model.fit(X, Y, epochs=50, batch_size=50)
 weights = model.get_weights()
 # evaluate the keras model
 _, accuracy = model.evaluate(vX, vY)
 print('Accuracy: %.2f' % (accuracy*100))
-#print(weights)
+print(weights)
 
 print(history.history.keys())
 # summarize history for accuracy
